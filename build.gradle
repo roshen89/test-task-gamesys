@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "${spring_boot_version}"
+    id 'io.spring.dependency-management' version "${spring_dependency_management_version}"
+}
+
+group 'com.buzzfeed'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "com.h2database:h2:${h2_version}"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    implementation "com.rometools:rome:${rome_version}"
+    implementation "io.springfox:springfox-swagger2:${swagger_version}"
+    implementation "io.springfox:springfox-swagger-ui:${swagger_version}"
+    implementation 'junit:junit:4.13.1'
+    compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
+    compileOnly "org.projectlombok:lombok:${lombok_version}"
+    annotationProcessor "org.projectlombok:lombok:${lombok_version}"
+    testCompileOnly "org.projectlombok:lombok:${lombok_version}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombok_version}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct_version}"
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task download(type: Exec) {
+    configurations.testCompile.files
+    commandLine 'echo', 'Downloaded all dependencies!'
+}

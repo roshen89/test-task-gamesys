@@ -1,0 +1,13 @@
+version: '3'
+networks:
+  default:
+services:
+  buzzfeed-rss:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: buzzfeed
+    ports:
+      - 6969:6969
+    networks:
+      - default
