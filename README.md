@@ -15,11 +15,11 @@ This application is for reading input data from external http source (Buzzfeed.c
 
 
 # Getting Started
-##Running application with docker
+## Running application with docker
 * Build application
 * Run application container with `docker-compose up -d` or `docker-compose up -d --build`
 * Stop running container and remove images with `docker-compose down --rmi local`
 
 
-##Swagger:
+## Swagger:
 `http://localhost:6969/api/v1/swagger-ui.html`
