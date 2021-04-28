@@ -17,7 +17,7 @@ public class NewsProviderTest {
     setField(newsProvider, "source", "https://www.buzzfeed.com/world.xml");
 
     //when
-    var result = newsProvider.getLastNews();
+    final var result = newsProvider.getLastNews();
 
     //then
     assertTrue(result.size() > 0);

@@ -40,11 +40,11 @@ public class NewsApiTest {
 
   @Test
   public void testGetLastNews() throws Exception {
-    var list = List.of(new NewsDTO());
-    RestResponse<List<NewsDTO>> expected = new RestResponse<>(list);
+    final var list = List.of(new NewsDTO());
+    final var expected = new RestResponse<>(list);
 
     when(service.getLastNews()).thenReturn(list);
-    MvcResult mvcResult = getLastNews();
+    final var mvcResult = getLastNews();
 
     assertEquals(mapper.writeValueAsString(expected), mvcResult.getResponse().getContentAsString());
   }
