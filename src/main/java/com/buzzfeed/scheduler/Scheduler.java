@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class Scheduler {
 
-  private final NewsProcessor newsProcessor;
+  private final NewsProcessor processor;
 
   @Scheduled(
       fixedDelayString = "${news.schedule.delay.fixed}",
@@ -23,7 +23,7 @@ public class Scheduler {
   )
   public void execute() {
     log.info("Started at: {}", now());
-    newsProcessor.processNews();
+    processor.processNews();
   }
 
 }
