@@ -21,10 +21,9 @@ public class Scheduler {
       fixedDelayString = "${news.schedule.delay.fixed}",
       initialDelayString = "${news.schedule.delay.initial}"
   )
-  public void newsScheduler() {
+  public void execute() {
     log.info("Started at: {}", now());
     newsProcessor.processNews();
-    log.info("Getting news completed.");
   }
 
 }

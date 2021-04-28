@@ -27,7 +27,7 @@ public class NewsRepositoryImpl implements NewsRepository {
 
   @Override
   public void saveAll(List<News> news) {
-    final var insertQuery = "INSERT INTO buzzfeed_news(title, description, uri, published_date, inserted_date) VALUES (?, ?, ?, ?, ?)";
+    final var insertQuery = "INSERT IGNORE INTO buzzfeed_news(title, description, uri, published_date, inserted_date) VALUES (?, ?, ?, ?, ?)";
     jdbcTemplate.batchUpdate(insertQuery, new BatchPreparedStatementSetter() {
 
       @Override

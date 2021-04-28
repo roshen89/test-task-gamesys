@@ -13,8 +13,8 @@ repositories {
 
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "com.h2database:h2:${h2_version}"
     implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    implementation "com.h2database:h2:${h2_version}"
     implementation "com.rometools:rome:${rome_version}"
     implementation "io.springfox:springfox-swagger2:${swagger_version}"
     implementation "io.springfox:springfox-swagger-ui:${swagger_version}"
@@ -24,9 +24,12 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${lombok_version}"
     testCompileOnly "org.projectlombok:lombok:${lombok_version}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombok_version}"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct_version}"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        exclude group: 'junit', module: 'junit'
     }
 }
 
