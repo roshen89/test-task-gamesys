@@ -1,7 +1,7 @@
 package com.buzzfeed.mapper;
 
 import com.buzzfeed.data.NewsDTO;
-import com.buzzfeed.data.NewsData;
+import com.buzzfeed.data.RssData;
 import com.buzzfeed.entity.News;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,7 +17,7 @@ public abstract class NewsMapper {
 
   public static final NewsMapper INSTANCE = Mappers.getMapper(NewsMapper.class);
 
-  public abstract News toNews(NewsData newsData);
+  public abstract News toNews(RssData rssData);
 
   public abstract NewsDTO toNewsDTO(News entity);
 

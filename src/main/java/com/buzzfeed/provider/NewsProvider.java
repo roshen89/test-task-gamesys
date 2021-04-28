@@ -1,6 +1,6 @@
 package com.buzzfeed.provider;
 
-import com.buzzfeed.data.NewsData;
+import com.buzzfeed.data.RssData;
 import java.util.List;
 
 /**
@@ -11,7 +11,7 @@ public interface NewsProvider {
   /**
    * Method is for getting last news.
    *
-   * @return List<NewsData>
+   * @return List<RssData>
    */
-  List<NewsData> getLastNews();
+  List<RssData> getLastNews();
 }

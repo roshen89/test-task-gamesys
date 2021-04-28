@@ -1,6 +1,6 @@
 package com.buzzfeed.provider.impl;
 
-import com.buzzfeed.data.NewsData;
+import com.buzzfeed.data.RssData;
 import com.buzzfeed.provider.NewsProvider;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
@@ -25,12 +25,12 @@ public class NewsProviderImpl implements NewsProvider {
   private String source;
 
   @Override
-  public List<NewsData> getLastNews() {
+  public List<RssData> getLastNews() {
     try (var reader = new XmlReader(new URL(source))) {
       SyndFeed feed = new SyndFeedInput().build(reader);
       return feed.getEntries()
           .stream()
-          .map(this::buildNewsData)
+          .map(this::buildRssData)
           .collect(Collectors.toList());
     } catch (IOException | FeedException e) {
       log.error("Error happened when getting last updates: ", e);
@@ -38,8 +38,8 @@ public class NewsProviderImpl implements NewsProvider {
     }
   }
 
-  private NewsData buildNewsData(SyndEntry entry) {
-    return NewsData.builder()
+  private RssData buildRssData(SyndEntry entry) {
+    return RssData.builder()
         .title(entry.getTitle())
         .description(entry.getDescription().getValue())
         .uri(entry.getUri())

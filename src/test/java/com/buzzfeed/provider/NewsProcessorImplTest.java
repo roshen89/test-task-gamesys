@@ -4,7 +4,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.buzzfeed.data.NewsData;
+import com.buzzfeed.data.RssData;
 import com.buzzfeed.entity.News;
 import com.buzzfeed.provider.impl.NewsProcessorImpl;
 import com.buzzfeed.provider.impl.NewsProviderImpl;
@@ -30,10 +30,10 @@ public class NewsProcessorImplTest {
   @Test
   public void testProcessNews() {
     //given
-    final var newsDataList = List.of(getNewsData());
+    final var RssDataList = List.of(getRssData());
     final var newsList = List.of(getNews());
 
-    when(providerMock.getLastNews()).thenReturn(newsDataList);
+    when(providerMock.getLastNews()).thenReturn(RssDataList);
 
     //when
     processor.processNews();
@@ -53,8 +53,8 @@ public class NewsProcessorImplTest {
         .build();
   }
 
-  private NewsData getNewsData() {
-    return NewsData.builder()
+  private RssData getRssData() {
+    return RssData.builder()
         .title("Title of news")
         .description("Desc of news")
         .uri("uri")
