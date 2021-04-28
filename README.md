@@ -1,6 +1,7 @@
 # Gamesys test task
 
 This application is for reading input data from external http source (Buzzfeed.com)  every x seconds-minutes, process data and save them to DB.
+Application has API to view results.
 
 ## Dependencies
 

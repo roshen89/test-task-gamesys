@@ -4,7 +4,7 @@ import com.buzzfeed.data.NewsData;
 import java.util.List;
 
 /**
- * Responsible to provide latest news.
+ * Responsible to connect rss and provide latest news.
  */
 public interface NewsProvider {
 
