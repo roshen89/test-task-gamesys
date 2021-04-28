@@ -1,6 +1,6 @@
 package com.buzzfeed.api;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -46,7 +46,7 @@ public class NewsApiTest {
     when(service.getLastNews()).thenReturn(list);
     MvcResult mvcResult = getLastNews();
 
-    assertThat(mapper.writeValueAsString(expected)).isEqualTo(mvcResult.getResponse().getContentAsString());
+    assertEquals(mapper.writeValueAsString(expected), mvcResult.getResponse().getContentAsString());
   }
 
   public MvcResult getLastNews() throws Exception {
