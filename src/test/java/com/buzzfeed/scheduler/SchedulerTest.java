@@ -2,7 +2,7 @@ package com.buzzfeed.scheduler;
 
 import static org.mockito.Mockito.verify;
 
-import com.buzzfeed.provider.NewsProcessor;
+import com.buzzfeed.provider.impl.NewsProcessorImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,7 +15,7 @@ public class SchedulerTest {
   @InjectMocks
   private Scheduler underTest;
   @Mock
-  private NewsProcessor processor;
+  private NewsProcessorImpl processor;
 
   @Test
   public void testScheduler() {

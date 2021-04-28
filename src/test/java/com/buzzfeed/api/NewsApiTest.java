@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.buzzfeed.data.NewsDTO;
 import com.buzzfeed.data.RestResponse;
-import com.buzzfeed.service.NewsService;
+import com.buzzfeed.service.impl.NewsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.junit.Before;
@@ -24,7 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 public class NewsApiTest {
 
   @Mock
-  private NewsService service;
+  private NewsServiceImpl service;
 
   @InjectMocks
   private NewsApi api;

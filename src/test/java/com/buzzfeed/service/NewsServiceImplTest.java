@@ -10,20 +10,21 @@ import static org.mockito.Mockito.when;
 import com.buzzfeed.data.NewsDTO;
 import com.buzzfeed.entity.News;
 import com.buzzfeed.repository.impl.NewsRepositoryImpl;
+import com.buzzfeed.service.impl.NewsServiceImpl;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class NewsServiceTest {
+public class NewsServiceImplTest {
 
   private NewsRepositoryImpl repositoryMock;
-  private NewsService service;
+  private NewsServiceImpl service;
 
   @Before
   public void init() {
     repositoryMock = mock(NewsRepositoryImpl.class);
-    service = new NewsService(repositoryMock);
+    service = new NewsServiceImpl(repositoryMock);
   }
 
   @Test

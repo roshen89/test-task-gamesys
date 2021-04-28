@@ -5,19 +5,20 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
+import com.buzzfeed.provider.impl.NewsProviderImpl;
 import org.junit.Test;
 
-public class NewsProviderTest {
+public class NewsProviderImplTest {
 
-  private final NewsProvider newsProvider = new NewsProvider();
+  private final NewsProviderImpl newsProviderImpl = new NewsProviderImpl();
 
   @Test
   public void testGetLastNews_success() {
     //given
-    setField(newsProvider, "source", "https://www.buzzfeed.com/world.xml");
+    setField(newsProviderImpl, "source", "https://www.buzzfeed.com/world.xml");
 
     //when
-    final var result = newsProvider.getLastNews();
+    final var result = newsProviderImpl.getLastNews();
 
     //then
     assertTrue(result.size() > 0);
@@ -31,9 +32,9 @@ public class NewsProviderTest {
   @Test
   public void testGetLastNews_throwsException() {
     //given
-    setField(newsProvider, "source", "uri.xml");
+    setField(newsProviderImpl, "source", "uri.xml");
 
     //when-then
-    assertThrows(RuntimeException.class, newsProvider::getLastNews);
+    assertThrows(RuntimeException.class, newsProviderImpl::getLastNews);
   }
 }

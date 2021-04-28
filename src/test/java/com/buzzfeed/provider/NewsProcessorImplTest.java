@@ -6,23 +6,25 @@ import static org.mockito.Mockito.when;
 
 import com.buzzfeed.data.NewsData;
 import com.buzzfeed.entity.News;
-import com.buzzfeed.service.NewsService;
+import com.buzzfeed.provider.impl.NewsProcessorImpl;
+import com.buzzfeed.provider.impl.NewsProviderImpl;
+import com.buzzfeed.service.impl.NewsServiceImpl;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class NewsProcessorTest {
+public class NewsProcessorImplTest {
 
-  private NewsProvider providerMock;
-  private NewsService service;
-  private NewsProcessor processor;
+  private NewsProviderImpl providerMock;
+  private NewsServiceImpl serviceMock;
+  private NewsProcessorImpl processor;
 
   @Before
   public void init() {
-    providerMock = mock(NewsProvider.class);
-    service = mock(NewsService.class);
-    processor = new NewsProcessor(providerMock, service);
+    providerMock = mock(NewsProviderImpl.class);
+    serviceMock = mock(NewsServiceImpl.class);
+    processor = new NewsProcessorImpl(providerMock, serviceMock);
   }
 
   @Test
@@ -37,7 +39,7 @@ public class NewsProcessorTest {
     processor.processNews();
 
     //then
-    verify(service).saveNews(newsList);
+    verify(serviceMock).saveNews(newsList);
     verify(providerMock).getLastNews();
   }
 

@@ -2,30 +2,24 @@ package com.buzzfeed.service;
 
 import com.buzzfeed.data.NewsDTO;
 import com.buzzfeed.entity.News;
-import com.buzzfeed.mapper.NewsMapper;
-import com.buzzfeed.repository.NewsRepository;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class NewsService {
+/**
+ * Service is responsible to save and get news.
+ */
+public interface NewsService {
 
-  @Value("${news.limit}")
-  private Integer limit;
+  /**
+   * Method is for getting latest news.
+   *
+   * @return List<NewsDTO>
+   */
+  List<NewsDTO> getLastNews();
 
-  private static final NewsMapper newsMapper = NewsMapper.INSTANCE;
-  private final NewsRepository repository;
-
-  public List<NewsDTO> getLastNews() {
-    return newsMapper.toNewsDTOs(repository.findLastNews(limit));
-  }
-
-  public void saveNews(List<News> news) {
-    repository.saveAll(news);
-  }
+  /**
+   * Method is for saving list of news.
+   *
+   * @param news - list of news for saving to db.
+   */
+  void saveNews(List<News> news);
 }
