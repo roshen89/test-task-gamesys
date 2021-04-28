@@ -12,7 +12,7 @@ public class NewsProviderTest {
   private final NewsProvider newsProvider = new NewsProvider();
 
   @Test
-  public void testGetLastUpdates_success() {
+  public void testGetLastNews_success() {
     //given
     setField(newsProvider, "source", "https://www.buzzfeed.com/world.xml");
 
@@ -29,7 +29,7 @@ public class NewsProviderTest {
   }
 
   @Test
-  public void testGetLastUpdates_throwsException() {
+  public void testGetLastNews_throwsException() {
     //given
     setField(newsProvider, "source", "uri.xml");
 
